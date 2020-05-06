@@ -23,14 +23,14 @@
 
 using Endpoint = boost::asio::ip::tcp::endpoint;
 using Acceptor = boost::asio::ip::tcp::acceptor;
-using Context = boost::asio::io_context;
+//using Context = boost::asio::io_context;
 using Service = boost::asio::io_service;
 using Socket = boost::asio::ip::tcp::socket;
 namespace logging = boost::log;
 namespace keywords = boost::log::keywords;
 
 const unsigned PORT_NUM = 8001;
-const unsigned MAX_SYM = 1024;
+const unsigned MAX_SYM = 256;
 const Endpoint ep(boost::asio::ip::address::from_string("127.0.0.1"), PORT_NUM);
 const unsigned LOG_SIZE = 10 * 1024 * 1024;
 const char LOG_NAME_TRACE[] = "../log/trace_%N.log";

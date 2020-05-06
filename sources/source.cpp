@@ -35,7 +35,7 @@ void My_server::worker_thread() {
         for (auto it = _client_list.begin(); it != _client_list.end();) {
             try {
                 (*it)->get_sock().non_blocking(true);
-                if (timed_out(*it)) throw "c";
+                if (timed_out(*it)) throw "time";
                 if (!((*it)->get_sock().is_open())) throw 101;
                 reader(*it);
                 req_analysis(*it);
@@ -76,7 +76,7 @@ void My_server::reader(std::shared_ptr<My_client> &b) {
 }
 
 void My_server::req_analysis(std::shared_ptr<My_client> &b) {
-    std::string buffer(_buff, sym_read);
+    //std::string buffer(_buff, sym_read);
     if (sym_read >= MAX_SYM) {
         b->get_sock().write_some(boost::asio::
                                  buffer("message is too long\n"));
